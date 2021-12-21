@@ -1,7 +1,7 @@
 const express = require('express');
 const { dirname } = require('path');
 const app = express()
-const port = 3000
+const port = 4000
 const path = require('path');
 const fs = require('fs')
 
@@ -19,9 +19,9 @@ app.post('/home', (req, res) => {
     })
     req.on('end', ()=>{
         fs.readFile('./file.txt', 'utf8', (err, olddata)=>{
-const newdata = olddata + '\n' + data
+const newdata = olddata + '\n' + data.split('&')
 fs.writeFile('./file.txt', newdata, ()=>{
-    console.log(data)
+    console.log(data.split('&'))
 })
         })
        
