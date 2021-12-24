@@ -1,13 +1,19 @@
 const express = require('express');
 const { dirname } = require('path');
 const app = express()
-const port = 4000
+const port = 3000
 const path = require('path');
 const fs = require('fs')
 
+
+app.set('view engine', 'ejs')
 app.get('/',(req,res)=>{
-    res.write('Hello World')
-    res.end()
+    // res.write('Hello World')
+    // res.end()
+    res.render('form.ejs')
+})
+app.post('/homejs', (req,res) =>{
+    res.render('home.ejs')
 })
 
 app.get('/login',(req,res)=>{
