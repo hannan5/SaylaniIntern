@@ -5,11 +5,14 @@ const port = 4000
 const path = require('path');
 const fs = require('fs')
 
+app.get('/',(req,res)=>{
+    res.write('Hello World')
+    res.end()
+})
 
 app.get('/login',(req,res)=>{
     res.sendFile(path.join(__dirname,'/login.html'));
 })
-
 app.post('/home', (req, res) => {
     res.sendFile(path.join(__dirname,'/home.html'));
     let data = ''
@@ -33,6 +36,6 @@ app.get('*',(req, res)=>{
     res.end()
 })
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
